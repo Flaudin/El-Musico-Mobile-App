@@ -4,6 +4,7 @@ import 'package:el_musico/screens/hotlist/components/hotlist_body.dart';
 import 'package:el_musico/screens/playlist/components/playlist_body.dart';
 import 'package:el_musico/screens/search/components/search_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/home';
@@ -24,42 +25,46 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: pages.elementAt(currentIndex),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+          statusBarBrightness: Brightness.light, statusBarColor: dark),
+      child: Scaffold(
+        body: Container(
+          child: pages.elementAt(currentIndex),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: dark,
+            unselectedItemColor: darkgray,
+            unselectedLabelStyle: const TextStyle(color: darkgray),
+            currentIndex: currentIndex,
+            onTap: onItemTap,
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home,
+                    //color: gray,
+                  ),
+                  label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.search_rounded,
+                    //color: gray,
+                  ),
+                  label: 'Search'),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.library_music_outlined,
+                    // color: gray,
+                  ),
+                  label: 'Library'),
+              BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.whatshot,
+                    // color: gray,
+                  ),
+                  label: 'Hotlist'),
+            ]),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: dark,
-          unselectedItemColor: darkgray,
-          unselectedLabelStyle: const TextStyle(color: darkgray),
-          currentIndex: currentIndex,
-          onTap: onItemTap,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  //color: gray,
-                ),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.search_rounded,
-                  //color: gray,
-                ),
-                label: 'Search'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.library_music_outlined,
-                  // color: gray,
-                ),
-                label: 'Library'),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.whatshot,
-                  // color: gray,
-                ),
-                label: 'Hotlist'),
-          ]),
     );
   }
 }

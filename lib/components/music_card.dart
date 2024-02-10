@@ -5,6 +5,7 @@ import 'package:el_musico/constants.dart';
 import 'package:el_musico/models/music_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 
 class MusicCard extends StatelessWidget {
   const MusicCard({super.key, required this.music});
@@ -15,9 +16,11 @@ class MusicCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return const MusicPlayer();
-        }));
+        Navigator.push(
+            context,
+            PageTransition(
+                child: const MusicPlayer(),
+                type: PageTransitionType.bottomToTop));
       },
       leading: Text(
         music.id.toString(),

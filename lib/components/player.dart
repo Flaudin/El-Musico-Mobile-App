@@ -1,6 +1,7 @@
 import 'package:el_musico/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class MusicPlayer extends StatefulWidget {
   const MusicPlayer({super.key});
@@ -111,8 +112,8 @@ class _MusicPlayerState extends State<MusicPlayer> {
               children: [
                 IconButton(
                     onPressed: () {},
-                    icon: const Icon(
-                      Icons.shuffle_rounded,
+                    icon: const FaIcon(
+                      FontAwesomeIcons.shuffle,
                       color: gray,
                     )),
                 IconButton(

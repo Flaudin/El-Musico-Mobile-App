@@ -1,10 +1,17 @@
+import 'package:el_musico/constants.dart';
 import 'package:el_musico/routs.dart';
 import 'package:el_musico/screens/onboard/onboard_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: dark,
+      statusBarColor: dark,
+      statusBarIconBrightness: Brightness.light,
+      systemNavigationBarIconBrightness: Brightness.light));
   runApp(const MyApp());
 }
 
