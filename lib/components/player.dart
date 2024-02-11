@@ -29,8 +29,8 @@ class _MusicPlayerState extends State<MusicPlayer> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(
-              Icons.keyboard_arrow_down_rounded,
+            icon: const FaIcon(
+              FontAwesomeIcons.chevronDown,
               color: dark,
             )),
         centerTitle: true,
@@ -74,10 +74,9 @@ class _MusicPlayerState extends State<MusicPlayer> {
                         isFav = !isFav;
                       });
                     },
-                    icon: Icon(
-                      isFav ? Icons.favorite_border_rounded : Icons.favorite,
-                      color: gray,
-                    )),
+                    icon: FaIcon(isFav
+                        ? FontAwesomeIcons.heart
+                        : FontAwesomeIcons.solidHeart)),
                 Column(
                   children: [
                     Text(
@@ -98,10 +97,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                 ),
                 IconButton(
                     onPressed: () {},
-                    icon: const Icon(
-                      Icons.more_horiz_rounded,
-                      color: gray,
-                    ))
+                    icon: const FaIcon(FontAwesomeIcons.ellipsis))
               ],
             ),
             SizedBox(

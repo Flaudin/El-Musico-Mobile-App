@@ -4,6 +4,7 @@ import 'package:el_musico/models/music_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -20,20 +21,46 @@ class _HomeBodyState extends State<HomeBody> {
           statusBarColor: dark, statusBarIconBrightness: Brightness.light),
       child: Scaffold(
         drawer: Drawer(
-          child: ListView(
-            children: const [
-              ListTile(
-                leading: Icon(
-                  Icons.dark_mode_rounded,
-                  color: darkgray,
-                ),
-              )
-            ],
+          backgroundColor: light,
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  Text(
+                    'La Musico',
+                    style: TextStyle(
+                        fontSize: xl * 1.2,
+                        color: dark,
+                        fontWeight: FontWeight.w700),
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  ListTile(
+                    leading: const FaIcon(
+                      FontAwesomeIcons.solidMoon,
+                      color: dark,
+                    ),
+                    title: Text(
+                      'Dark Mode',
+                      style: TextStyle(
+                        fontSize: lg,
+                        color: dark,
+                      ),
+                    ),
+                    trailing:
+                        Switch.adaptive(value: false, onChanged: (value) {}),
+                  )
+                ],
+              ),
+            ),
           ),
         ),
         appBar: AppBar(
           backgroundColor: white,
-          automaticallyImplyLeading: false,
+          //automaticallyImplyLeading: false,
           centerTitle: true,
           title: Text(
             "La Musico",

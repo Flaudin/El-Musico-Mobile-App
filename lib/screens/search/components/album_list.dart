@@ -15,25 +15,31 @@ class _AlbumListState extends State<AlbumList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ResponsiveGridList(
-          minItemWidth: 175.w,
-          minItemsPerRow: 2,
-          maxItemsPerRow: 3,
-          children: [
-            ListView.separated(
-                itemBuilder: (context, index) {
-                  return PlayListCard(
-                      title: demoPlaylist[index].title,
-                      numberOfSongs: demoPlaylist[index].numOfSongs,
-                      image: demoPlaylist[index].image,
-                      date: demoPlaylist[index].date,
-                      tapped: () {});
-                },
-                separatorBuilder: (context, index) {
-                  return const SizedBox();
-                },
-                itemCount: demoPlaylist.length),
-          ]),
+      body: demoPlaylist.isEmpty
+          ? const CircularProgressIndicator.adaptive()
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+              child: ResponsiveGridList(
+                  minItemWidth: 175.w,
+                  minItemsPerRow: 2,
+                  maxItemsPerRow: 3,
+                  children: List.generate(
+                      demoPlaylist.length,
+                      (index) => PlayListCard(
+                          title: demoPlaylist[index].title.toString().isNotEmpty
+                              ? demoPlaylist[index].title.toString()
+                              : 'Null',
+                          numberOfSongs: demoPlaylist[index].numOfSongs != 0
+                              ? demoPlaylist[index].numOfSongs
+                              : 0,
+                          image: demoPlaylist[index].image.toString().isNotEmpty
+                              ? demoPlaylist[index].image.toString()
+                              : 'Null',
+                          date: demoPlaylist[index].date.toString().isNotEmpty
+                              ? demoPlaylist[index].date.toString()
+                              : 'Null',
+                          tapped: () {}))),
+            ),
     );
   }
 }

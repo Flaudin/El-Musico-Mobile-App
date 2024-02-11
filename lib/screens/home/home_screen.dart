@@ -5,6 +5,7 @@ import 'package:el_musico/screens/playlist/components/playlist_body.dart';
 import 'package:el_musico/screens/search/components/search_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = '/home';
@@ -40,16 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: onItemTap,
             items: const [
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.home,
-                    //color: gray,
-                  ),
-                  label: 'Home'),
+                  icon: FaIcon(FontAwesomeIcons.music), label: 'Home'),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.search_rounded,
-                    //color: gray,
-                  ),
+                  icon: FaIcon(FontAwesomeIcons.searchengin
+                      //color: gray,
+                      ),
                   label: 'Search'),
               BottomNavigationBarItem(
                   icon: Icon(
@@ -58,10 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   label: 'Library'),
               BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.whatshot,
-                    // color: gray,
-                  ),
+                  icon: FaIcon(FontAwesomeIcons.fireFlameCurved),
                   label: 'Hotlist'),
             ]),
       ),
