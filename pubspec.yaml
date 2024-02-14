@@ -44,6 +44,7 @@ dependencies:
   responsive_grid_list: ^1.4.0
   page_transition: ^2.1.0
   font_awesome_flutter: ^10.7.0
+  http: ^1.2.0
 
 dev_dependencies:
   flutter_test:
