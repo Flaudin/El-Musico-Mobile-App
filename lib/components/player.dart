@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:el_musico/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +12,26 @@ class MusicPlayer extends StatefulWidget {
 }
 
 class _MusicPlayerState extends State<MusicPlayer> {
+  AudioCache audioCache = AudioCache();
+  AudioPlayer advancePlayer = AudioPlayer();
+  //String localFilePath;
   bool isFav = true;
   bool isPlaying = true;
+
+  Widget playingButton(String txt, VoidCallback onPressed) {
+    return FloatingActionButton(
+        backgroundColor: dark,
+        shape: const CircleBorder(),
+        onPressed: onPressed,
+        child: Icon(
+          isPlaying ? Icons.play_arrow_rounded : Icons.pause,
+          color: white,
+        ));
+  }
+
+  Widget localAsset() {
+    return playingButton('Play', () => audioCache);
+  }
 
   @override
   void initState() {

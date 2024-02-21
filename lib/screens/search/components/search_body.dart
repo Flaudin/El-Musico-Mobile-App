@@ -31,55 +31,35 @@ class _SearchBodState extends State<SearchBody>
             statusBarColor: dark, statusBarIconBrightness: Brightness.light),
         child: Scaffold(
           appBar: AppBar(
-              title: TextFormField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                        borderSide: BorderSide(color: dark, width: 1.5.w)),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                        borderSide: BorderSide(color: dark, width: 1.5.w)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8.r),
-                        borderSide: BorderSide(color: dark, width: 1.5.w)),
-                    hintText: 'Search songs here ...',
-                    contentPadding: EdgeInsets.symmetric(vertical: 8.h),
-                    prefixIcon: const Icon(
-                      Icons.search_outlined,
-                      color: dark,
+              toolbarHeight: 60.h,
+              title: Padding(
+                padding: EdgeInsets.only(top: 24.h),
+                child: TabBar(
+                  controller: tabController,
+                  labelColor: dark,
+                  unselectedLabelColor: gray,
+                  indicatorColor: dark,
+                  tabs: const [
+                    Tab(
+                      icon: FaIcon(
+                        FontAwesomeIcons.person,
+                      ),
+                      text: 'Artist',
                     ),
-                    suffixIcon: const Icon(
-                      Icons.close_outlined,
-                      color: dark,
-                    )),
-                style: TextStyle(fontSize: lg, fontWeight: FontWeight.w600),
-                textAlign: TextAlign.left,
-              ),
-              bottom: TabBar(
-                controller: tabController,
-                labelColor: dark,
-                unselectedLabelColor: gray,
-                indicatorColor: dark,
-                tabs: const [
-                  Tab(
-                    icon: FaIcon(
-                      FontAwesomeIcons.person,
+                    Tab(
+                      icon: FaIcon(
+                        FontAwesomeIcons.compactDisc,
+                      ),
+                      text: 'Album',
                     ),
-                    text: 'Artist',
-                  ),
-                  Tab(
-                    icon: FaIcon(
-                      FontAwesomeIcons.compactDisc,
-                    ),
-                    text: 'Album',
-                  ),
-                  Tab(
-                    icon: FaIcon(
-                      FontAwesomeIcons.music,
-                    ),
-                    text: 'Genre',
-                  )
-                ],
+                    Tab(
+                      icon: FaIcon(
+                        FontAwesomeIcons.music,
+                      ),
+                      text: 'Genre',
+                    )
+                  ],
+                ),
               )),
           body: TabBarView(
               controller: tabController,

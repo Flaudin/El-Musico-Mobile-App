@@ -1,17 +1,17 @@
 class Artist {
   int id;
   String name;
-  Uri link;
-  Uri share;
-  Uri picture;
-  Uri pictureSmall;
-  Uri pictureMedium;
-  Uri pictureBig;
-  Uri pictureXl;
+  String link;
+  String share;
+  String picture;
+  String pictureSmall;
+  String pictureMedium;
+  String pictureBig;
+  String pictureXl;
   int nbAlbum;
   int nbFans;
   bool radio;
-  Uri trackList;
+  String trackList;
 
   Artist(
       {required this.id,
@@ -34,7 +34,7 @@ class Artist {
         link: json['link'],
         name: json['name'],
         nbAlbum: json['nb_album'],
-        nbFans: json['nb_fans'],
+        nbFans: json['nb_fan'],
         picture: json['picture'],
         pictureBig: json['picture_big'],
         pictureMedium: json['picture_medium'],
@@ -42,6 +42,6 @@ class Artist {
         pictureXl: json['picture_xl'],
         radio: json['radio'],
         share: json['share'],
-        trackList: json['trackList']);
+        trackList: json['tracklist']);
   }
 }

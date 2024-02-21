@@ -9,15 +9,14 @@ class ArtistService {
   WebService webService = WebService();
   List<Artist> artistLists = [];
 
-  Future<void> getArtist(int id) async {
+  Future<Artist> getArtist() async {
     webService.authenticateToken(apiUri);
     try {
-      var response = await http.get(Uri.parse("${apiUri}artist/$id"));
+      var response = await http.get(Uri.parse("${apiUri}artist/27?top=10"));
       if (response.statusCode == 200) {
-        var result = jsonDecode(response.body);
-        if (result != null) {
-          artistLists = result;
-        }
+        return Artist.artistfromJson(jsonDecode(response.body));
+      } else {
+        throw Exception('Failed to load data');
       }
     } catch (ex) {
       throw Exception(ex.toString());
